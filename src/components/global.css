@@ -1,0 +1,17 @@
+.container {
+  height: 100vh;
+  background-image: url('bg.png');
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.movie-container {
+  background-image: url('bg.png');
+  opacity: 0.9;
+  height: auto;
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
