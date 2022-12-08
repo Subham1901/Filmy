@@ -2,21 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Image,
   Text,
-  Button,
   Heading,
   Stack,
   Box,
-  Divider,
   useToast,
   Progress,
-  Center,
 } from '@chakra-ui/react';
-import bg from './movie.jpg';
+
 import axios from 'axios';
 function Movie() {
   const { id } = useParams();
@@ -27,7 +23,7 @@ function Movie() {
     setloading(true);
     await axios
       .get(
-        `http://www.omdbapi.com/?t=${encodeURIComponent(
+        `https://www.omdbapi.com/?t=${encodeURIComponent(
           id
         )}&plot=full&apikey=6cac098a`
       )
