@@ -1,0 +1,21 @@
+* {
+  font-family: 'Kumbh Sans', sans-serif !important;
+}
+.main-body,
+.carousel-container {
+  max-width: 100% !important;
+}
+.menu {
+  color: #faf9f6;
+}
+.header {
+  max-width: 100% !important;
+}
+.carousel {
+  opacity: 0.8;
+}
+
+.parent-img {
+  overflow: hidden;
+  position: relative;
+}

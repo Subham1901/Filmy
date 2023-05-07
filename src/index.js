@@ -1,14 +1,13 @@
-import { ColorModeScript } from '@chakra-ui/react';
-import React, { StrictMode } from 'react';
-import * as ReactDOM from 'react-dom/client';
+import React from 'react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { createRoot } from 'react-dom/client';
 import App from './App';
-
-const container = document.getElementById('root');
-const root = ReactDOM.createRoot(container);
-
+import './style.css';
+import { ChakraProvider } from '@chakra-ui/react';
+import { theme } from './utility/util';
+const root = createRoot(document.getElementById('root'));
 root.render(
-  <StrictMode>
-    <ColorModeScript />
+  <ChakraProvider theme={theme}>
     <App />
-  </StrictMode>
+  </ChakraProvider>
 );
