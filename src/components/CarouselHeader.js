@@ -7,9 +7,14 @@ const CarouselHeader = () => {
   const images = useCarousel();
 
   return (
-    <Carousel autoPlay={false} showStatus={false}>
-      {images.map(data => (
-        <>
+    <Carousel
+      showArrows={true}
+      autoPlay={true}
+      infiniteLoop={true}
+      showStatus={false}
+    >
+      {images &&
+        images.map(data => (
           <Img
             height={['40rem', '45rem']}
             objectFit={'cover'}
@@ -19,9 +24,7 @@ const CarouselHeader = () => {
             key={data?.id}
             src={backdropImagePath + data?.image}
           />
-        </>
-      ))}
-      {/* <Text color={'filmy.heading'}>Trending</Text> */}
+        ))}
     </Carousel>
   );
 };

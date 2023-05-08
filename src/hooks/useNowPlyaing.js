@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { nowPlayingAPI } from '../utility/util';
-const useNowPlaying = () => {
-  const [data, setNowPlaying] = useState({});
+
+const useNowPlaying = URL => {
+  const [data, setMovieData] = useState({});
   const getNowPlayingData = async () => {
     try {
-      const { data } = await axios.get(nowPlayingAPI);
-      setNowPlaying(data);
+      const { data } = await axios.get(URL);
+      setMovieData(data);
     } catch (error) {
       console.log(error);
     }

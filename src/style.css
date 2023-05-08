@@ -5,11 +5,20 @@
 .carousel-container {
   max-width: 100% !important;
 }
+.search-input {
+  color: #faf9f6;
+  outline: none !important;
+}
+
 .menu {
   color: #faf9f6;
 }
 .header {
   max-width: 100% !important;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #151728;
 }
 .carousel {
   opacity: 0.8;
@@ -18,4 +27,8 @@
 .parent-img {
   overflow: hidden;
   position: relative;
+}
+
+.carousel {
+  opacity: 0.5;
 }

@@ -34,7 +34,10 @@ export const nowPlayingAPI =
   'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=7f3b56995772caf3c4ab77353b47e57b';
 export const posterImagePath =
   'https://www.themoviedb.org/t/p/w220_and_h330_face';
-
+export const topRatedAPI =
+  'https://api.themoviedb.org/3/movie/top_rated?api_key=7f3b56995772caf3c4ab77353b47e57b&language=en-US&page=1';
+export const popularAPI =
+  'https://api.themoviedb.org/3/movie/popular?api_key=7f3b56995772caf3c4ab77353b47e57b&language=en-US&page=1';
 export const formatDate = date => {
   const val = date.split('-');
   const month = months.filter(data => data?.num === val[1]);
