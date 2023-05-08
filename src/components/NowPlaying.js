@@ -12,7 +12,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React from 'react';
-import { AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import useNowPlaying from '../hooks/useNowPlyaing';
 import { formatDate, nowPlayingAPI, posterImagePath } from '../utility/util';
 import { Link } from 'react-router-dom';
@@ -77,7 +77,7 @@ const NowPlaying = () => {
                       <Text mr={1} fontWeight={'bold'} color={'filmy.text'}>
                         {data?.vote_average}
                       </Text>
-                      <AiOutlineStar color="#FDDA0D" />
+                      <AiFillStar color="#FDDA0D" />
                     </Box>
                     <Box>
                       <Text

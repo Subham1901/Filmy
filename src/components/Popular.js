@@ -12,9 +12,10 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React from 'react';
-import { AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import useNowPlaying from '../hooks/useNowPlyaing';
 import { formatDate, posterImagePath, popularAPI } from '../utility/util';
+import { Link } from 'react-router-dom';
 
 const Popular = () => {
   const data = useNowPlaying(popularAPI);
@@ -38,56 +39,58 @@ const Popular = () => {
       >
         {data?.results &&
           data?.results.map(data => (
-            <Card cursor={'pointer'} m={5} shadow={'lg'}>
-              <CardHeader>
-                <Box borderRadius={'md'} className="parent-img">
-                  <Img
-                    transition={'all 0.3s'}
-                    _hover={{ transform: 'scale(1.1)' }}
-                    className="card-image"
-                    borderRadius={'md'}
-                    src={posterImagePath + data?.poster_path}
-                  />
-                </Box>
-                <Text
-                  w={200}
-                  variant={'unstyled'}
-                  textAlign={'center'}
-                  mt={2}
-                  color={'filmy.text'}
-                >
-                  {data?.title}
-                </Text>
-
-                <Box
-                  mt={2}
-                  display={'flex'}
-                  flexDirection={'row'}
-                  alignItems={'center'}
-                  justifyContent={'space-between'}
-                >
-                  <Box
-                    display={'flex'}
-                    alignItems={'center'}
-                    justifyContent={'center'}
+            <Link key={data?.id} to={`movie/${data?.id}`}>
+              <Card cursor={'pointer'} m={5} shadow={'lg'}>
+                <CardHeader>
+                  <Box borderRadius={'md'} className="parent-img">
+                    <Img
+                      transition={'all 0.3s'}
+                      _hover={{ transform: 'scale(1.1)' }}
+                      className="card-image"
+                      borderRadius={'md'}
+                      src={posterImagePath + data?.poster_path}
+                    />
+                  </Box>
+                  <Text
+                    w={200}
+                    variant={'unstyled'}
+                    textAlign={'center'}
+                    mt={2}
+                    color={'filmy.text'}
                   >
-                    <Text mr={1} fontWeight={'bold'} color={'filmy.text'}>
-                      {data?.vote_average}
-                    </Text>
-                    <AiOutlineStar color="#FDDA0D" />
-                  </Box>
-                  <Box>
-                    <Text
-                      fontWeight={'light'}
-                      fontSize={'sm'}
-                      color={'filmy.text'}
+                    {data?.title}
+                  </Text>
+
+                  <Box
+                    mt={2}
+                    display={'flex'}
+                    flexDirection={'row'}
+                    alignItems={'center'}
+                    justifyContent={'space-between'}
+                  >
+                    <Box
+                      display={'flex'}
+                      alignItems={'center'}
+                      justifyContent={'center'}
                     >
-                      {formatDate(data?.release_date)}
-                    </Text>
+                      <Text mr={1} fontWeight={'bold'} color={'filmy.text'}>
+                        {data?.vote_average}
+                      </Text>
+                      <AiFillStar color="#FDDA0D" />
+                    </Box>
+                    <Box>
+                      <Text
+                        fontWeight={'light'}
+                        fontSize={'sm'}
+                        color={'filmy.text'}
+                      >
+                        {formatDate(data?.release_date)}
+                      </Text>
+                    </Box>
                   </Box>
-                </Box>
-              </CardHeader>
-            </Card>
+                </CardHeader>
+              </Card>
+            </Link>
           ))}
       </Box>
     </Container>
