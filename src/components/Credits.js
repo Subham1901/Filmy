@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   Button,
+  Center,
   HStack,
   Heading,
   Text,
@@ -17,17 +18,22 @@ const Credits = ({ credits }) => {
     buttonRef.current.scrollLeft += Offset;
   };
   const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 8,
+    },
     desktop: {
-      breakpoint: { max: 1536, min: 1280 },
-      items: 5,
+      breakpoint: { max: 3000, min: 1024 },
+      items: 6,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 10,
+      items: 4,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 10,
+      items: 3,
     },
   };
   return (
@@ -43,35 +49,13 @@ const Credits = ({ credits }) => {
       >
         top cast
       </Heading>
-      {/* <Box display={'flex'} justifyContent={'center'} alignItems={'center'}> */}
-      {/* <Button
-          m={'1rem !important'}
-          borderRadius={'full'}
-          bgColor={'gray.700'}
-          _hover={{ backgroundColor: 'none' }}
-          color={'filmy.text'}
-          p={0}
-          textAlign={'center'}
-          onClick={() => scroll(-200)}
-        >
-          <IoIosArrowBack size={20} />
-        </Button> */}
-      {/* <HStack
-        className="cast"
-        ref={buttonRef}
-        flexWrap={'nowrap'}
-        overflow={'hidden'}
-        whiteSpace={'nowrap'}
-        mt={5}
-        display={'flex'}
-        justifyContent={'center'}
-        alignItems={'center'}
-      > */}
+
       <Carousel responsive={responsive}>
         {credits.map(data => (
           <Box
             key={data?.id}
             m={4}
+            p={2}
             display={'flex'}
             flexDirection={'column'}
             justifyContent={'center'}
@@ -81,25 +65,23 @@ const Credits = ({ credits }) => {
               size={['lg', 'xl', '2xl']}
               src={posterImagePath + data?.profile_path}
             />
-            <Text color={'filmy.text'}>{data?.original_name}</Text>
-            <Text color={'gray.400'}>{data?.character}</Text>
+            <Text
+              textAlign={'center'}
+              fontSize={['xs', 'sm']}
+              color={'filmy.text'}
+            >
+              {data?.original_name}
+            </Text>
+            <Text
+              textAlign={'center'}
+              fontSize={['xs', 'sm']}
+              color={'gray.400'}
+            >
+              {data?.character}
+            </Text>
           </Box>
         ))}
       </Carousel>
-      {/* </HStack> */}
-      {/* <Button
-          m={'1rem !important'}
-          borderRadius={'full'}
-          bgColor={'gray.700'}
-          _hover={{ backgroundColor: 'none' }}
-          color={'filmy.text'}
-          p={0}
-          textAlign={'center'}
-          onClick={() => scroll(200)}
-        >
-          <IoIosArrowForward size={20} />
-        </Button> */}
-      {/* </Box> */}
     </>
   );
 };

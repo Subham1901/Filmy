@@ -9,17 +9,23 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import useSearch from '../hooks/useSearch';
 import { backdropImagePath, formatDate } from '../utility/util';
 import { posterImagePath } from '../utility/util';
 import { AiFillStar } from 'react-icons/ai';
 import { BsDot } from 'react-icons/bs';
 import Credits from './Credits';
+import Recommendation from './Recommendation';
+import Skeletons from './Skeletons';
 const MovieDetails = () => {
-  const { movieid } = useParams();
-  const searchData = useSearch(movieid);
-  console.log(searchData);
+  const [movieParams] = useSearchParams();
+
+  const searchData = useSearch(movieParams.get('q'));
+
+  if (!searchData?.backdrop_path) {
+    return <Skeletons />;
+  }
   return (
     <Container mt={2} className="main-body">
       <Img
@@ -112,11 +118,13 @@ const MovieDetails = () => {
                 {searchData?.vote_count} votes
               </Text>
             </Box>
-            <Box>
-              <Text mt={2} className="tagline" color={'filmy.yellow'}>
-                "{searchData?.tagline}"
-              </Text>
-            </Box>
+            {searchData?.tagline && (
+              <Box>
+                <Text mt={2} className="tagline" color={'filmy.yellow'}>
+                  "{searchData?.tagline}"
+                </Text>
+              </Box>
+            )}
           </Box>
         </Box>
       </Container>
@@ -133,6 +141,8 @@ const MovieDetails = () => {
         </AspectRatio>
       </Box>
       {searchData?.credits && <Credits credits={searchData?.credits?.cast} />}
+      <Recommendation type="recommendations" movieid={movieParams.get('q')} />
+      <Recommendation type="similar" movieid={movieParams.get('q')} />
     </Container>
   );
 };

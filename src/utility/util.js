@@ -43,12 +43,12 @@ export const movieDetailsAPI = 'https://api.themoviedb.org/3/movie/';
 
 export const params = {
   api_key: '7f3b56995772caf3c4ab77353b47e57b',
-  languiage: 'en-US',
+  language: 'en-US',
   append_to_response: 'credits',
 };
 
 export const formatDate = date => {
   const val = date.split('-');
   const month = months.filter(data => data?.num === val[1]);
-  return `${val[2]} ${month[0].form} ${val[0]}`;
+  return `${val[2]} ${month[0]} ${val[0]}`;
 };

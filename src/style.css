@@ -1,5 +1,6 @@
 * {
   font-family: 'Kumbh Sans', sans-serif !important;
+  scroll-behavior: smooth;
 }
 .main-body,
 .carousel-container {
@@ -43,6 +44,7 @@
 .cast {
   scroll-behavior: smooth;
 }
+
 /* .movie-details-img {
   position: relative;
   left: 50%;

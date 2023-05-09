@@ -28,7 +28,7 @@ export const createRoutes = createBrowserRouter([
         element: <HomeContainer />,
       },
       {
-        path: '/movie/:movieid',
+        path: '/movie',
         element: <MovieDetails />,
       },
     ],
