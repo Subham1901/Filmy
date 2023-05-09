@@ -40,6 +40,8 @@ export const popularAPI =
   'https://api.themoviedb.org/3/movie/popular?api_key=7f3b56995772caf3c4ab77353b47e57b&language=en-US&page=1';
 
 export const movieDetailsAPI = 'https://api.themoviedb.org/3/movie/';
+export const searchQuery =
+  'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&api_key=7f3b56995772caf3c4ab77353b47e57b';
 
 export const params = {
   api_key: '7f3b56995772caf3c4ab77353b47e57b',

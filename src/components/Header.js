@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Drawer,
   DrawerBody,
@@ -11,10 +11,12 @@ import {
   Button,
   Input,
   Box,
+  Text,
 } from '@chakra-ui/react';
 import { GrMenu } from 'react-icons/gr';
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Container p={2} className="header">
       <Box
@@ -25,6 +27,7 @@ const Header = () => {
         <Button p={0} borderRadius={'full'}>
           <GrMenu className="menu" size={20} />
         </Button>
+
         <form>
           <Input
             className="search-input"
