@@ -27,9 +27,15 @@ const MovieCards = ({ data }) => {
                     : `/movie/?q=${data?.id}`
                 }
               >
-                <Card w={['200px']} m={5} shadow={'lg'}>
+                <Card w={['xs', '200px', '200px']} m={5} shadow={'lg'}>
                   <CardHeader>
-                    <Box borderRadius={'md'} className="parent-img">
+                    <Box
+                      display={'flex'}
+                      justifyContent={'center'}
+                      alignContent={'center'}
+                      borderRadius={'md'}
+                      className="parent-img"
+                    >
                       <Img
                         transition={'all 0.3s'}
                         _hover={{ transform: 'scale(1.1)' }}
@@ -39,16 +45,20 @@ const MovieCards = ({ data }) => {
                       />
                     </Box>
 
-                    <Text
-                      textAlign={'center'}
-                      variant={'unstyled'}
-                      mt={2}
-                      p={2}
-                      color={'filmy.text'}
+                    <Box
+                      display={'flex'}
+                      justifyContent={'center'}
+                      alignContent={'center'}
                     >
-                      {data?.title}
-                    </Text>
-
+                      <Text
+                        variant={'unstyled'}
+                        mt={2}
+                        p={2}
+                        color={'filmy.text'}
+                      >
+                        {data?.title}
+                      </Text>
+                    </Box>
                     <Box
                       mt={2}
                       display={'flex'}
