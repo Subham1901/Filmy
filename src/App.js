@@ -8,6 +8,7 @@ import Popular from './components/Popular';
 import { Outlet, createBrowserRouter } from 'react-router-dom';
 import MovieDetails from './components/MovieDetails';
 import HomeContainer from './components/MainContainer';
+import SearchPage from './components/SearchPage';
 
 const AppLayout = () => {
   return (
@@ -31,7 +32,15 @@ export const createRoutes = createBrowserRouter([
         path: '/movie',
         element: <MovieDetails />,
       },
+      {
+        path: '/movie/search',
+        element: <SearchPage />,
+      },
     ],
+  },
+  {
+    path: '/search',
+    element: <SearchPage />,
   },
 ]);
 

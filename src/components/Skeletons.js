@@ -16,7 +16,7 @@ const Skeletons = () => {
       alignItems={'center'}
     >
       {[...Array(12).keys()].map(data => (
-        <Card w={'xs'} m={2}>
+        <Card key={data} w={'xs'} m={2}>
           <Skeleton height="100px"></Skeleton>
           <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
         </Card>

@@ -52,5 +52,5 @@ export const params = {
 export const formatDate = date => {
   const val = date.split('-');
   const month = months.filter(data => data?.num === val[1]);
-  return `${val[2]} ${month[0]} ${val[0]}`;
+  return `${val[2]} ${month[0]?.form} ${val[0]}`;
 };

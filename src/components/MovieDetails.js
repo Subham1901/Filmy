@@ -23,19 +23,22 @@ const MovieDetails = () => {
 
   const searchData = useSearch(movieParams.get('q'));
 
-  if (!searchData?.backdrop_path) {
+  if (!searchData?.id) {
     return <Skeletons />;
   }
   return (
     <Container mt={2} className="main-body">
-      <Img
-        height={['20rem', '40rem']}
-        objectFit={'cover'}
-        borderRadius={'md'}
-        shadow={'lg'}
-        className="carousel"
-        src={backdropImagePath + searchData?.backdrop_path}
-      />
+      {searchData?.backdrop_path && (
+        <Img
+          height={['20rem', '40rem']}
+          objectFit={'cover'}
+          borderRadius={'md'}
+          shadow={'lg'}
+          className="carousel"
+          src={backdropImagePath + searchData?.backdrop_path}
+        />
+      )}
+
       <Container mt={2} maxW={'container.lg'}>
         <Box
           display={'flex'}
