@@ -11,18 +11,22 @@ const Recommendation = ({ movieid, type }) => {
 
   return (
     <Container className="main-body">
-      <Heading
-        textTransform={'uppercase'}
-        letterSpacing={'2px'}
-        textAlign={'center'}
-        margin={'auto'}
-        fontSize={'3xl'}
-        fontWeight={'md'}
-        color={'filmy.heading'}
-      >
-        {type} movies
-      </Heading>
-      <MovieCards data={recomendedData} />
+      {recomendedData?.results && (
+        <>
+          <Heading
+            textTransform={'uppercase'}
+            letterSpacing={'2px'}
+            textAlign={'center'}
+            margin={'auto'}
+            fontSize={'3xl'}
+            fontWeight={'md'}
+            color={'filmy.heading'}
+          >
+            {type} movies
+          </Heading>
+          <MovieCards data={recomendedData} />
+        </>
+      )}
     </Container>
   );
 };

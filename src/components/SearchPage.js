@@ -5,6 +5,7 @@ import { params } from '../utility/util';
 import useNowPlaying from '../hooks/useNowPlyaing';
 import MovieCards from './MovieCards';
 import Skeletons from './Skeletons';
+import Header from './Header';
 
 const SearchPage = () => {
   const [searhQuery] = useSearchParams();
@@ -19,6 +20,7 @@ const SearchPage = () => {
   }
   return (
     <Container className="main-body" bgColor={'filmy.bg'}>
+      <Header source="searchpage" />
       <MovieCards data={data} />
     </Container>
   );
