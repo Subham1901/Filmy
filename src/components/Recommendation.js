@@ -11,7 +11,7 @@ const Recommendation = ({ movieid, type }) => {
 
   return (
     <Container className="main-body">
-      {recomendedData?.results && (
+      {recomendedData?.results?.length > 0 && (
         <>
           <Heading
             textTransform={'uppercase'}

@@ -1,14 +1,26 @@
 import {
   AspectRatio,
+  Avatar,
   Box,
+  Button,
   Code,
   Container,
   Heading,
   Image,
   Img,
+  Link,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Spacer,
   Text,
+  useDisclosure,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import useSearch from '../hooks/useSearch';
 import { backdropImagePath, formatDate } from '../utility/util';
@@ -18,19 +30,27 @@ import { BsDot } from 'react-icons/bs';
 import Credits from './Credits';
 import Recommendation from './Recommendation';
 import Skeletons from './Skeletons';
-const MovieDetails = () => {
-  const [movieParams] = useSearchParams();
+import useNowPlaying from '../hooks/useNowPlyaing';
 
+const MovieDetails = () => {
+  const [read, setReadMore] = useState(false);
+
+  const [movieParams] = useSearchParams();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const searchData = useSearch(movieParams.get('q'));
+  const url = `https://api.themoviedb.org/3/movie/${movieParams.get(
+    'q'
+  )}/reviews?language=en-US&page=1&api_key=7f3b56995772caf3c4ab77353b47e57b`;
+  const reviews = useNowPlaying(url);
 
   if (!searchData?.id) {
     return <Skeletons />;
   }
   return (
-    <Container mt={2} className="main-body">
+    <Container position={'relative'} mt={2} className="main-body-details">
       {searchData?.backdrop_path && (
         <Img
-          height={['20rem', '40rem']}
+          height={['20rem', '35rem']}
           objectFit={'cover'}
           borderRadius={'md'}
           shadow={'lg'}
@@ -121,6 +141,18 @@ const MovieDetails = () => {
                 {searchData?.vote_count} votes
               </Text>
             </Box>
+            <Button
+              _hover={{ backgroundColor: 'none' }}
+              mt={2}
+              p={2}
+              fontWeight={'light'}
+              variant={'unstyled'}
+              color={'white'}
+              onClick={onOpen}
+              backgroundColor={'gray.700'}
+            >
+              Reviews
+            </Button>
             {searchData?.tagline && (
               <Box>
                 <Text mt={2} className="tagline" color={'filmy.yellow'}>
@@ -146,6 +178,79 @@ const MovieDetails = () => {
       {searchData?.credits && <Credits credits={searchData?.credits?.cast} />}
       <Recommendation type="recommendations" movieid={movieParams.get('q')} />
       <Recommendation type="similar" movieid={movieParams.get('q')} />
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader fontWeight={'semibold'}>Reviews</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {reviews?.results?.length > 0 ? (
+              reviews?.results.map(data => (
+                <Box shadow={'md'} borderRadius={'md'} key={data?.id}>
+                  <Box
+                    m={2}
+                    p={1}
+                    display={'flex'}
+                    flexDirection={'column'}
+                    justifyContent={'flex-start'}
+                    alignItems={'flex-start'}
+                  >
+                    <Avatar
+                      name={data?.author_details?.name || data?.author}
+                      src={posterImagePath + data?.author_details?.avatar_path}
+                    />
+                    <Text
+                      letterSpacing={1}
+                      fontWeight={'semibold'}
+                      fontSize={'sm'}
+                    >
+                      {data?.author_details?.name || data?.author}
+                    </Text>
+                    {data?.author_details?.rating && (
+                      <Code
+                        p={0.5}
+                        display={'flex'}
+                        alignItems={'center'}
+                        bgColor={'black'}
+                        borderRadius={'md'}
+                        fontSize={'xs'}
+                        color={'white'}
+                        w={10}
+                      >
+                        <AiFillStar size={13} style={{ marginRight: '3px' }} />
+                        {data?.author_details?.rating}
+                      </Code>
+                    )}
+                    <Text mt={2} color={'gray.500'} fontSize={'sm'}>
+                      {data?.content.length > 300 ? (
+                        <Text>
+                          {read
+                            ? data?.content
+                            : data?.content.substring(0, 300)}
+
+                          <Link
+                            onClick={e => setReadMore(data => !data)}
+                            ml={2}
+                            color={'black'}
+                            fontWeight={'bold'}
+                          >
+                            {!read ? 'Read More' : 'Read Less'}
+                          </Link>
+                        </Text>
+                      ) : (
+                        data?.content
+                      )}
+                    </Text>
+                  </Box>
+                </Box>
+              ))
+            ) : (
+              <Text>No reviews yet!</Text>
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </Container>
   );
 };

@@ -27,7 +27,7 @@ const MovieCards = ({ data }) => {
                     : `/movie/?q=${data?.id}`
                 }
               >
-                <Card m={5} shadow={'lg'}>
+                <Card w={['200px']} m={5} shadow={'lg'}>
                   <CardHeader>
                     <Box borderRadius={'md'} className="parent-img">
                       <Img
@@ -38,11 +38,12 @@ const MovieCards = ({ data }) => {
                         src={posterImagePath + data?.poster_path}
                       />
                     </Box>
+
                     <Text
-                      w={200}
-                      variant={'unstyled'}
                       textAlign={'center'}
+                      variant={'unstyled'}
                       mt={2}
+                      p={2}
                       color={'filmy.text'}
                     >
                       {data?.title}

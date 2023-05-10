@@ -62,10 +62,12 @@ const Credits = ({ credits }) => {
             alignItems={'center'}
           >
             <Avatar
+              name={data?.original_name}
               size={['lg', 'xl', '2xl']}
               src={posterImagePath + data?.profile_path}
             />
             <Text
+              m={1}
               textAlign={'center'}
               fontSize={['xs', 'sm']}
               color={'filmy.text'}
@@ -73,6 +75,7 @@ const Credits = ({ credits }) => {
               {data?.original_name}
             </Text>
             <Text
+              m={1}
               textAlign={'center'}
               fontSize={['xs', 'sm']}
               color={'gray.400'}
