@@ -1,4 +1,4 @@
-import { Container, Text } from '@chakra-ui/react';
+import { Container, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { params } from '../utility/util';
@@ -18,6 +18,26 @@ const SearchPage = () => {
   if (!data?.results) {
     return <Skeletons />;
   }
+
+  if (data?.results?.length === 0) {
+    return (
+      <>
+        <Header source="searchpage" />
+        <Heading
+          color={'filmy.bg'}
+          fontWeight={'md'}
+          textAlign={'center'}
+          mt={10}
+        >
+          Sorry, No movie exist with the name{' '}
+          <span className="moviename-error">
+            " {decodeURI(searhQuery.get('q'))} "!
+          </span>
+        </Heading>
+      </>
+    );
+  }
+
   return (
     <Container className="main-body" bgColor={'filmy.bg'}>
       <Header source="searchpage" />

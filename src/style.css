@@ -29,6 +29,9 @@
 .carousel {
   opacity: 0.8;
 }
+.moviename-error {
+  color: rgb(255, 98, 0);
+}
 
 .parent-img {
   overflow: hidden;
