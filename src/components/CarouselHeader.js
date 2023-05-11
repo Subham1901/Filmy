@@ -1,31 +1,55 @@
-import { Box, Container, Img, Text } from '@chakra-ui/react';
+import { Box, Img, Text } from '@chakra-ui/react';
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
 import useCarousel from '../hooks/useCarousel';
-import { backdropImagePath, imageURL } from '../utility/util';
+import { backdropImagePath } from '../utility/util';
+import AliceCarousel from 'react-alice-carousel';
 const CarouselHeader = () => {
   const images = useCarousel();
-
-  return (
-    <Carousel
-      showArrows={true}
-      autoPlay={true}
-      infiniteLoop={true}
-      showStatus={false}
-    >
-      {images &&
-        images.map(data => (
+  let imageList = [];
+  if (images) {
+    imageList = images.map(data => {
+      return (
+        <Box className="carousel-box">
           <Img
             height={['40rem', '45rem']}
             objectFit={'cover'}
+            w={'full'}
             borderRadius={'md'}
             shadow={'dark-lg'}
             className="carousel"
             key={data?.id}
             src={backdropImagePath + data?.image}
           />
-        ))}
-    </Carousel>
+          <Text
+            w={'sm'}
+            borderRadius={'md'}
+            p={1}
+            fontSize={'lg'}
+            className="text-carousel"
+            textAlign={'center'}
+            color={'white'}
+          >
+            {data?.title}
+          </Text>
+        </Box>
+      );
+    });
+  }
+
+  return (
+    <>
+      {imageList && (
+        <AliceCarousel
+          mouseTracking
+          infinite={true}
+          items={imageList}
+          animationDuration={1800}
+          autoPlay
+          autoPlayInterval={900}
+          disableButtonsControls={false}
+        />
+      )}
+    </>
   );
 };
 

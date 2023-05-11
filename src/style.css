@@ -51,6 +51,17 @@
 .cast {
   scroll-behavior: smooth;
 }
+.carousel-box {
+  position: relative;
+}
+.text-carousel {
+  position: absolute;
+
+  background-color: rgba(0, 0, 0, 0.2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /* .movie-details-img {
   position: relative;

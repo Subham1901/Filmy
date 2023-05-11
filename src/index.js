@@ -1,6 +1,7 @@
 import React from 'react';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+// requires a loader
 import 'react-multi-carousel/lib/styles.css';
+import 'react-alice-carousel/lib/alice-carousel.css';
 import { createRoot } from 'react-dom/client';
 import App, { createRoutes } from './App';
 import './style.css';

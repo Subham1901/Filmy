@@ -50,6 +50,7 @@ const MovieDetails = () => {
     <Container position={'relative'} mt={2} className="main-body-details">
       {searchData?.backdrop_path && (
         <Img
+          w={'full'}
           height={['20rem', '35rem']}
           objectFit={'cover'}
           borderRadius={'md'}
