@@ -13,5 +13,5 @@ Filmy is an online movie list application that shows several categories, such as
 
 ## Screenshots
 
-![App Screenshot](https://github.com/github/Filmy/blob/assets/movie.png)
+![App Screenshot](https://github.com/Subham1901/Filmy/blob/master/src/assets/movie.png)
 
