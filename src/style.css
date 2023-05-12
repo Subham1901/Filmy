@@ -62,6 +62,18 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.main-body-class {
+  position: relative !important;
+  overflow: hidden;
+  max-width: 100% !important;
+}
+.carousel-container {
+  display: flex;
+  overflow-x: hidden;
+}
+.button-list {
+  min-width: 200px !important;
+}
 
 /* .movie-details-img {
   position: relative;

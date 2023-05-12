@@ -77,13 +77,15 @@ const MovieCards = ({ data }) => {
                         <AiFillStar color="#FDDA0D" />
                       </Box>
                       <Box>
-                        <Text
-                          fontWeight={'light'}
-                          fontSize={'sm'}
-                          color={'filmy.text'}
-                        >
-                          {formatDate(data?.release_date)}
-                        </Text>
+                        {data?.release_date && (
+                          <Text
+                            fontWeight={'light'}
+                            fontSize={'sm'}
+                            color={'filmy.text'}
+                          >
+                            {formatDate(data?.release_date)}
+                          </Text>
+                        )}
                       </Box>
                     </Box>
                   </CardHeader>

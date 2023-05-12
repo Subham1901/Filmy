@@ -97,6 +97,18 @@ const Header = ({ source }) => {
                 Home
               </Button>
             </Link>
+            <Link to={'/discover'}>
+              <Button
+                mt={2}
+                onClick={onClose}
+                w={'full'}
+                _hover={{ backgroundColor: 'none' }}
+                bgColor={'filmy.bg'}
+                color={'filmy.text'}
+              >
+                Movie
+              </Button>
+            </Link>
           </DrawerBody>
 
           <DrawerFooter>

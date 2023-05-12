@@ -10,7 +10,7 @@ const Recommendation = ({ movieid, type }) => {
   const recomendedData = useNowPlaying(url);
 
   return (
-    <Container className="main-body">
+    <Container className="main-body-class">
       {recomendedData?.results?.length > 0 && (
         <>
           <Heading

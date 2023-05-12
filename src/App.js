@@ -9,6 +9,7 @@ import { Outlet, createBrowserRouter } from 'react-router-dom';
 import MovieDetails from './components/MovieDetails';
 import HomeContainer from './components/MainContainer';
 import SearchPage from './components/SearchPage';
+import MoviesbyCat from './components/MoviesbyCat';
 
 const AppLayout = () => {
   return (
@@ -35,6 +36,10 @@ export const createRoutes = createBrowserRouter([
       {
         path: '/movie/search',
         element: <SearchPage />,
+      },
+      {
+        path: '/discover',
+        element: <MoviesbyCat />,
       },
     ],
   },
